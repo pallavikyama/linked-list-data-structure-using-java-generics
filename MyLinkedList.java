@@ -34,19 +34,10 @@ public class MyLinkedList<E> {
 		}
 	}
 
-	// INSERTING NEW NODE AT THE SPECIFIED POSITION
-	public void insert(int index, NodeInterface<E> newNode) {
-		if (this.head == null)
-			this.head = newNode;
-		if (this.tail == null)
-			this.tail = newNode;
-		else {
-			NodeInterface<E> tempNode = this.head;
-			for (int i = 0; i < index - 1; i++)
-				tempNode = tempNode.getNext();
-			newNode.setNext(tempNode.getNext());
-			tempNode.setNext(newNode);
-		}
+	// INSERTING NEW NODE AFTER A SPECIFIC NODE
+	public void insert(NodeInterface<E> refNode, NodeInterface<E> newNode) {
+		newNode.setNext(refNode.getNext());
+		refNode.setNext(newNode);
 	}
 
 	// DELETING FIRST ELEMENT IN THIS LIST
