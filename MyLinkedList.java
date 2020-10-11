@@ -8,7 +8,20 @@ public class MyLinkedList<E> {
 		this.head = null;
 		this.tail = null;
 	}
-	
+
+	// ADDING NEW NODE IN THE FRONT IN LIST
+	public void add(NodeInterface<E> newNode) {
+		if (this.head == null)
+			this.head = newNode;
+		if (this.tail == null)
+			this.tail = newNode;
+		else {
+			NodeInterface<E> tempNode = this.head;
+			this.head = newNode;
+			this.head.setNext(tempNode);
+		}
+	}
+
 	public void printNodes() {
 		StringBuffer allNodes = new StringBuffer();
 		NodeInterface<E> tempNode = this.head;
