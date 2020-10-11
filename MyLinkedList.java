@@ -49,6 +49,13 @@ public class MyLinkedList<E> {
 		}
 	}
 
+	// DELETING FIRST ELEMENT IN THIS LIST
+	public E pop() {
+		NodeInterface<E> tempNode = this.head;
+		this.head = this.head.getNext();
+		return tempNode.getData();
+	}
+
 	public void printNodes() {
 		StringBuffer allNodes = new StringBuffer();
 		NodeInterface<E> tempNode = this.head;
@@ -59,6 +66,6 @@ public class MyLinkedList<E> {
 			tempNode = tempNode.getNext();
 		}
 		allNodes.append(tempNode.getData());
-		System.out.println(allNodes);
+		System.out.println("Displaying all my nodes:  " + allNodes);
 	}
 }

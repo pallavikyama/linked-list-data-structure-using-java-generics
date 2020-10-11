@@ -7,7 +7,7 @@ import org.junit.Test;
 public class LinkedListTest {
 
 	@Test
-	public void TestUC4() {
+	public void TestUC5() {
 		MyLinkedList<Integer> myList = new MyLinkedList<>();
 		MyNode<Integer> firstNode = new MyNode<Integer>(56);
 		myList.add(firstNode);
@@ -15,9 +15,10 @@ public class LinkedListTest {
 		myList.append(secondNode);
 		MyNode<Integer> thirdNode = new MyNode<Integer>(30);
 		myList.insert(1, thirdNode);
+		System.out.println("Removing " + myList.pop() + ".");
 		myList.printNodes();
-		assertEquals(myList.head, firstNode);
+		assertEquals(myList.head, thirdNode);
 		assertEquals(myList.tail, secondNode);
-		assertEquals(myList.head.getNext(), thirdNode);
+		assertEquals(myList.head.getNext(), secondNode);
 	}
 }
