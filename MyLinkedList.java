@@ -67,6 +67,18 @@ public class MyLinkedList<E> {
 		return tempNode;
 	}
 
+	// SEARCHING FOR A NODE USING ITS DATA VALUE
+	public NodeInterface<E> search(E data) {
+		NodeInterface<E> tempNode = this.head;
+		while (tempNode.getNext() != null && tempNode != null) {
+			if (tempNode.getData().equals(data))
+				return tempNode;
+			else
+				tempNode = tempNode.getNext();
+		}
+		return null;
+	}
+
 	public void printNodes() {
 		StringBuffer allNodes = new StringBuffer();
 		NodeInterface<E> tempNode = this.head;
