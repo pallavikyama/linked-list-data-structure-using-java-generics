@@ -1,15 +1,15 @@
 package com.blz.datastructures;
 
-public class MyLinkedList<E> {
+public class SortedLinkedList<E extends Comparable<E>> {
 	NodeInterface<E> head;
 	NodeInterface<E> tail;
 
-	public MyLinkedList() {
+	public SortedLinkedList() {
 		this.head = null;
 		this.tail = null;
 	}
 
-	// ADDING NEW NODE IN THE FRONT IN LIST
+	// ADDING NEW NODE INTO THE LIST IN SORTED ORDER
 	public void add(NodeInterface<E> newNode) {
 		if (this.head == null)
 			this.head = newNode;
@@ -17,12 +17,24 @@ public class MyLinkedList<E> {
 			this.tail = newNode;
 		else {
 			NodeInterface<E> tempNode = this.head;
-			this.head = newNode;
-			this.head.setNext(tempNode);
+			if (tempNode.getData().compareTo(newNode.getData()) >= 0) {
+				newNode.setNext(this.head);
+				this.head = newNode;
+			} else {
+				while (tempNode.getNext().getData().compareTo(newNode.getData()) < 0) {
+					tempNode = tempNode.getNext();
+					if (tempNode.getNext() == null) {
+						append(newNode);
+						return;
+					}
+				}
+				newNode.setNext(tempNode.getNext());
+				tempNode.setNext(newNode);
+			}
 		}
 	}
 
-	// APPENDING NEW NODE IN THE LAST IN LIST
+	// APPENDING NEW NODE AT THE LAST IN LIST
 	public void append(NodeInterface<E> newNode) {
 		if (this.head == null)
 			this.head = newNode;

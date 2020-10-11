@@ -7,22 +7,21 @@ import org.junit.Test;
 public class LinkedListTest {
 
 	@Test
-	public void TestUC9() {
-		MyLinkedList<Integer> myList = new MyLinkedList<>();
+	public void TestUC10() {
+		SortedLinkedList<Integer> myList = new SortedLinkedList<Integer>();
 		MyNode<Integer> firstNode = new MyNode<Integer>(56);
 		myList.add(firstNode);
-		MyNode<Integer> secondNode = new MyNode<Integer>(70);
-		myList.append(secondNode);
-		MyNode<Integer> thirdNode = new MyNode<Integer>(30);
-		myList.insert(firstNode, thirdNode);
-		MyNode<Integer> fourthNode = new MyNode<Integer>(40);
-		myList.insert(myList.search(30), fourthNode);
-		myList.delete(40);
+		MyNode<Integer> secondNode = new MyNode<Integer>(30);
+		myList.add(secondNode);
+		MyNode<Integer> thirdNode = new MyNode<Integer>(40);
+		myList.add(thirdNode);
+		MyNode<Integer> fourthNode = new MyNode<Integer>(70);
+		myList.add(fourthNode);
 		myList.printNodes();
-		assertEquals(myList.head, firstNode);
-		assertEquals(myList.tail, secondNode);
+		assertEquals(myList.head, secondNode);
+		assertEquals(myList.tail, fourthNode);
 		assertEquals(myList.head.getNext(), thirdNode);
-		assertEquals(thirdNode.getNext(), myList.tail);
-		assertEquals(3, myList.size());
+		assertEquals(thirdNode.getNext(), firstNode);
+		assertEquals(firstNode.getNext(), myList.tail);
 	}
 }
