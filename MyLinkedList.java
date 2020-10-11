@@ -34,6 +34,21 @@ public class MyLinkedList<E> {
 		}
 	}
 
+	// INSERTING NEW NODE AT THE SPECIFIED POSITION
+	public void insert(int index, NodeInterface<E> newNode) {
+		if (this.head == null)
+			this.head = newNode;
+		if (this.tail == null)
+			this.tail = newNode;
+		else {
+			NodeInterface<E> tempNode = this.head;
+			for (int i = 0; i < index - 1; i++)
+				tempNode = tempNode.getNext();
+			newNode.setNext(tempNode.getNext());
+			tempNode.setNext(newNode);
+		}
+	}
+
 	public void printNodes() {
 		StringBuffer allNodes = new StringBuffer();
 		NodeInterface<E> tempNode = this.head;
