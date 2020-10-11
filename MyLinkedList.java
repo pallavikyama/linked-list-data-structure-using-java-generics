@@ -70,6 +70,38 @@ public class MyLinkedList<E> {
 		return null;
 	}
 
+	// DELETING SPECIFIED NODE USING SEARCH-METHOD ABOVE
+	public NodeInterface<E> delete(E data) {
+		NodeInterface<E> tempNode = this.head;
+		if (search(data) == null)
+			return search(data);
+		if (search(data).equals(this.head))
+			return pop();
+		if (search(data).equals(this.tail))
+			return popLast();
+		else {
+			while (!tempNode.getNext().equals(search(data))) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(search(data).getNext());
+		}
+		return search(data);
+	}
+
+	// GET CURRENT SIZE OF THIS LIST
+	public int size() {
+		NodeInterface<E> tempNode = this.head;
+		int value = 0;
+		if (tempNode != null)
+			while (!tempNode.equals(this.tail)) {
+				++value;
+				tempNode = tempNode.getNext();
+			}
+		else
+			return 0;
+		return ++value;
+	}
+
 	public void printNodes() {
 		StringBuffer allNodes = new StringBuffer();
 		NodeInterface<E> tempNode = this.head;
