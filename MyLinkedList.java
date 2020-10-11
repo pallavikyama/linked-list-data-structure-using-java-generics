@@ -50,10 +50,21 @@ public class MyLinkedList<E> {
 	}
 
 	// DELETING FIRST ELEMENT IN THIS LIST
-	public E pop() {
+	public NodeInterface<E> pop() {
 		NodeInterface<E> tempNode = this.head;
 		this.head = this.head.getNext();
-		return tempNode.getData();
+		return tempNode;
+	}
+
+	// DELETING LAST ELEMENT IN THIS LIST
+	public NodeInterface<E> popLast() {
+		NodeInterface<E> tempNode = this.head;
+		while (!tempNode.getNext().equals(this.tail))
+			tempNode = tempNode.getNext();
+		this.tail = tempNode;
+		tempNode = tempNode.getNext();
+		this.tail.setNext(null);
+		return tempNode;
 	}
 
 	public void printNodes() {
