@@ -22,6 +22,18 @@ public class MyLinkedList<E> {
 		}
 	}
 
+	// APPENDING NEW NODE IN THE LAST IN LIST
+	public void append(NodeInterface<E> newNode) {
+		if (this.head == null)
+			this.head = newNode;
+		if (this.tail == null)
+			this.tail = newNode;
+		else {
+			this.tail.setNext(newNode);
+			this.tail = newNode;
+		}
+	}
+
 	public void printNodes() {
 		StringBuffer allNodes = new StringBuffer();
 		NodeInterface<E> tempNode = this.head;
